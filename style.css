@@ -1,0 +1,71 @@
+/*
+ *	File CSS per l'interfaccia grafica.
+ *	Giulio Zausa
+ */
+ 
+body {
+	background-color: #2185D5;
+	color: #F3F3F3;
+	margin: 0px;
+	font-family: 'Raleway', sans-serif;
+}
+
+#container {
+	margin: auto;
+	width: 60%;
+	min-width: 550px;
+	background-color: #303841;
+}
+
+header {
+	text-align: center;
+	min-width: 400px;
+	width: 70%;
+	margin: auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-size: 40pt;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+footer {
+	text-align: center;
+	min-width: 400px;
+	width: 70%;
+	margin: auto;
+	margin-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	font-size: 13pt;
+	border-top: 1px solid #535353;
+	color: #A3A3A3;
+	font-style: italic;
+}
+
+#canvasDiv {
+	background-color: #FFFFFF;
+	margin: auto;
+	width: 512px;
+	height: 512px;
+	padding: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#controlsArea {
+	background-color: #3A4750;
+	text-align: center;
+	margin: auto;
+	width: 512px;
+	padding: 10px;
+}
+
+.dataEntry {
+	padding: 5px;
+	margin-left: 5px;
+}
+
+.slider {
+	padding: 5px;
+	margin-left: 5px;
+}
