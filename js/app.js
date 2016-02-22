@@ -26,5 +26,6 @@ var app =
 		this.speed = parseFloat(this.elementSpeed.value),
 		
 		this.onElemChange();
+		startAnimation();
 	}
 }
