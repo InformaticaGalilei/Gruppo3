@@ -4,19 +4,11 @@
  */
 
 var app = 
-{
-	onElemChange: function()
-	{
-		// Aggiorna valori
-		this.fx = parseFloat(this.elementFx.value);
-		this.fy = parseFloat(this.elementFy.value);
-		this.speed = parseFloat(this.elementSpeed.value);
-	},
-	
+{	
 	init: function()
 	{
 		// Crea riferimenti per elementi DOM
-		this.canvas = document.getElementById("drawingCanvas");		
+		this.canvas = document.getElementById("drawingCanvas");
 		this.elementFx = document.getElementById("Fx");
 		this.elementFy = document.getElementById("Fy");
 		this.elementSpeed = document.getElementById("Speed");
