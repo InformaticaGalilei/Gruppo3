@@ -43,7 +43,7 @@ var app =
 	initHW: function()
 	{
 		// Crea il context e il dt
-		this.gl = this.canvas.getContext("webgl", { antialias: true});
+		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true});
 		this.timerStart = Date.now();
 		
 		// Crea index e vertex buffer
