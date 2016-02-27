@@ -17,6 +17,8 @@ var app =
 		
 		this.fx = parseFloat(this.elementFx.value);
 		this.fy = parseFloat(this.elementFy.value);
+		this.vFx.innerHTML = fx;
+		this.vFx.innerHTML = fy;
 		this.speed = parseFloat(this.elementSpeed.value);
 		
 		// Controlla se è attivata l'HWA
