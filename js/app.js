@@ -43,12 +43,20 @@ var app =
 	initHW: function()
 	{
 		// Crea il context e il dt
-		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true});
+		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true, alpha: false, preserveDrawingBuffer: true });
 		this.timerStart = Date.now();
 		
 		// Crea index e vertex buffer
-		this.vertices = [-1,1,0.0, -1,-1,0.0, 1,-1,0.0, 1,1,0.0];
-		this.indices = [3,2,1,3,1,0];
+		this.vertices = [];
+		this.indices = [];
+		var i = 0;
+		for (var t = 0.0; t < (Math.PI * 2.0); t += 0.005) {
+			this.vertices.push(t);
+			this.vertices.push(0.0);
+			this.vertices.push(0.0);
+			this.indices.push(i);
+			i++;
+		}
 		this.vertex_buffer = this.gl.createBuffer();
 		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.vertex_buffer);
 		this.gl.bufferData(this.gl.ARRAY_BUFFER, new Float32Array(this.vertices), this.gl.STATIC_DRAW);
@@ -59,11 +67,11 @@ var app =
 		this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, null);
 		
 		// Carica shaders
-		var vertCode =document.getElementById("vert").textContent;
+		var vertCode = srcVert;
 		var vertShader = this.gl.createShader(this.gl.VERTEX_SHADER);
 		this.gl.shaderSource(vertShader, vertCode);
 		this.gl.compileShader(vertShader);
-		var fragCode = document.getElementById("frag").textContent;
+		var fragCode = srcFrag;
         var fragShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
 		this.gl.shaderSource(fragShader, fragCode);
 		this.gl.compileShader(fragShader);
@@ -71,25 +79,26 @@ var app =
 		this.gl.attachShader(this.shaderProgram, vertShader);
 		this.gl.attachShader(this.shaderProgram, fragShader);
 		this.gl.linkProgram(this.shaderProgram);
-		this.locationOfTime = this.gl.getUniformLocation(this.shaderProgram, "time");
-		this.locationOfSize = this.gl.getUniformLocation(this.shaderProgram, "size");
-		this.locationOfFreq = this.gl.getUniformLocation(this.shaderProgram, "freq");
 		this.gl.useProgram(this.shaderProgram);
-		this.gl.uniform1f(this.locationOfTime, 0);
-		this.gl.uniform2f(this.locationOfSize, this.canvas.width, this.canvas.height);
-		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
-		console.log(this.gl.getShaderInfoLog(fragShader));
 		
-		// Associa shaders ai buffer
+		// Associa shaders ai buffer e carica variabili
 		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, this.vertex_buffer);
 		this.gl.bindBuffer(this.gl.ELEMENT_ARRAY_BUFFER, this.Index_Buffer);
 		var coord = this.gl.getAttribLocation(this.shaderProgram, "coordinates");
 		this.gl.vertexAttribPointer(coord, 3, this.gl.FLOAT, false, 0, 0);
 		this.gl.enableVertexAttribArray(coord);
+		this.locationOfTime = this.gl.getUniformLocation(this.shaderProgram, "time");
+		this.locationOfSize = this.gl.getUniformLocation(this.shaderProgram, "size");
+		this.locationOfFreq = this.gl.getUniformLocation(this.shaderProgram, "freq");
+		this.gl.uniform1f(this.locationOfTime, 0);
+		this.gl.uniform2f(this.locationOfSize, this.canvas.width, this.canvas.height);
+		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
 		
+		this.gl.clearColor(0.188, 0.22, 0.25, 1.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
 		
+		// 40 FPS
 		this.drawLoop = window.setInterval(HWDrawLoop, (1.0 / 40.0) * 1000.0);
 	}
 }
@@ -97,9 +106,10 @@ var app =
 function HWDrawLoop()
 {
 	// Disegna
+	app.gl.clear(app.gl.COLOR_BUFFER_BIT);
 	app.gl.uniform1f(app.locationOfTime, (Date.now() - app.timerStart) / 5000.0 * app.speed);
 	app.gl.uniform2f(app.locationOfFreq, app.fx, app.fy);
-	app.gl.drawElements(app.gl.TRIANGLES, app.indices.length, app.gl.UNSIGNED_SHORT,0);
+	app.gl.drawElements(app.gl.LINE_LOOP, app.indices.length, app.gl.UNSIGNED_SHORT,0);
 }
 
 function parseGetVars()
