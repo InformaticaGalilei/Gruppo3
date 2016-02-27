@@ -11,6 +11,8 @@ var app =
 		this.canvas = document.getElementById("drawingCanvas");
 		this.elementFx = document.getElementById("Fx");
 		this.elementFy = document.getElementById("Fy");
+		this.vFx = document.getElementById("fxVal");
+		this.vFy = document.getElementById("fyVal");
 		this.elementSpeed = document.getElementById("Speed");
 		
 		this.fx = parseFloat(this.elementFx.value);
