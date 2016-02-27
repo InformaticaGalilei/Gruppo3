@@ -16,6 +16,7 @@ body {
 	width: 60%;
 	min-width: 550px;
 	background-color: #303841;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAP0lEQVQIW2PUN3f4z8jIyAADzCwsDIwGFo7/////zwCSAAn8/fMHIghSBRMAscGCMAGYDkZjG9f/IC0wAJIAACILHVYRhoXsAAAAAElFTkSuQmCC) repeat;
 }
 
 header {
