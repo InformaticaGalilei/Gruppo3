@@ -11,4 +11,4 @@ var srcVert =
 		"precision mediump float;\n" +
 	"#endif\n" +
 	"attribute vec3 coordinates; uniform float time; uniform vec2 freq, size;\n" +
-	"void main() { gl_Position = vec4((9.0 / 10.0) * cos(freq.x * coordinates.x + time), (2.0 / 3.0) * sin(freq.y * coordinates.x), 0.0, 1.0); }";
+	"void main() { gl_Position = vec4((9.0 / 10.0) * cos(freq.x * coordinates.x + time), (9.0 / 10.0) * sin(freq.y * coordinates.x), 0.0, 1.0); }";
