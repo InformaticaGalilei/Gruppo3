@@ -21,15 +21,15 @@ var app =
 		var getVars = parseGetVars(), gl;
 		try { gl = this.canvas.getContext("webgl"); }
 		catch (x) { gl = null; }
-		if (getVars["hw"] == "false" || gl == null) {
-			this.hwAccel = false;
-			this.initNoHW();
-		} else {
+		if (getVars["hw"] == "true") {
 			this.hwAccel = true;
 			var label = document.getElementById("hwLabel");
 			label.innerHTML = "Disabilita accelerazione hardware";
 			label.href = "?hw=false";
 			this.initHW();
+		} else {
+			this.hwAccel = false;
+			this.initNoHW();
 		}
 	},
 	
