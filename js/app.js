@@ -47,7 +47,9 @@ var app =
 	initHW: function()
 	{
 		// Crea il context e il dt
-		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true, alpha: false, preserveDrawingBuffer: true });
+		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true,
+									 premultipliedAlpha: false,
+									 preserveDrawingBuffer: true });
 		this.timerStart = Date.now();
 		
 		// Crea index e vertex buffer
@@ -76,7 +78,7 @@ var app =
 		this.gl.shaderSource(vertShader, vertCode);
 		this.gl.compileShader(vertShader);
 		var fragCode = srcFrag;
-        var fragShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
+		var fragShader = this.gl.createShader(this.gl.FRAGMENT_SHADER);
 		this.gl.shaderSource(fragShader, fragCode);
 		this.gl.compileShader(fragShader);
 		this.shaderProgram = this.gl.createProgram();
@@ -98,7 +100,7 @@ var app =
 		this.gl.uniform2f(this.locationOfSize, this.canvas.width, this.canvas.height);
 		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
 		
-		this.gl.clearColor(0.188, 0.22, 0.25, 1.0);
+		this.gl.clearColor(0.188, 0.22, 0.25, 0.0);
 		this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
 		
