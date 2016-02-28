@@ -74,4 +74,10 @@ a {
 	padding: 5px;
 	margin-left: 5px;
 	vertical-align: middle;
+	width: 80%;
+}
+
+.attrib {
+	width: 100%;
+	display: inline-block;
 }
