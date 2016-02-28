@@ -22,9 +22,7 @@ var app =
 		this.speed = parseFloat(this.elementSpeed.value);
 		
 		// Controlla se è attivata l'HWA
-		var getVars = parseGetVars(), gl;
-		try { gl = this.canvas.getContext("webgl"); }
-		catch (x) { gl = null; }
+		var getVars = parseGetVars();
 		if (getVars["hw"] == "true") {
 			this.hwAccel = true;
 			var label = document.getElementById("hwLabel");
@@ -47,9 +45,7 @@ var app =
 	initHW: function()
 	{
 		// Crea il context e il dt
-		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true,
-									 premultipliedAlpha: false,
-									 preserveDrawingBuffer: true });
+		this.gl = this.canvas.getContext("experimental-webgl", { antialias: true, premultipliedAlpha: false, preserveDrawingBuffer: true });
 		this.timerStart = Date.now();
 		
 		// Crea index e vertex buffer
@@ -101,18 +97,17 @@ var app =
 		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
 		
 		this.gl.clearColor(0.188, 0.22, 0.25, 0.0);
-		this.gl.enable(this.gl.DEPTH_TEST);
+		//this.gl.enable(this.gl.DEPTH_TEST);
 		this.gl.viewport(0, 0, this.canvas.width, this.canvas.height);
 		
-		// 40 FPS
-		this.drawLoop = window.setInterval(HWDrawLoop, (1.0 / 40.0) * 1000.0);
+		this.drawLoop = window.setInterval(HWDrawLoop, 0);//(1.0 / 40.0) * 1000.0);
 	}
 }
 
 function HWDrawLoop()
 {
 	// Disegna
-	app.gl.clear(app.gl.COLOR_BUFFER_BIT);
+	app.gl.clear(app.gl.COLOR_BUFFER_BIT | app.gl.DEPTH_BUFFER_BIT);
 	app.gl.uniform1f(app.locationOfTime, (Date.now() - app.timerStart) / 5000.0 * app.speed);
 	app.gl.uniform2f(app.locationOfFreq, app.fx, app.fy);
 	app.gl.drawElements(app.gl.LINE_LOOP, app.indices.length, app.gl.UNSIGNED_SHORT,0);
