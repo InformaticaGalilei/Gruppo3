@@ -26,7 +26,7 @@ header {
 	margin: auto;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	font-size: 40pt;
+	font-size: 42pt;
 	border-bottom: 1px solid #F3F3F3;
 }
 
@@ -49,7 +49,6 @@ a {
 }
 
 #canvasDiv {
-	background-color: #FFFFFF;
 	margin: auto;
 	width: 512px;
 	height: 512px;
