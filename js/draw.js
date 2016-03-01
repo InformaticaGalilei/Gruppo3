@@ -19,7 +19,7 @@ function startAnimation()
 
 function frame(p)
 {
-	app.ctx.clearRectangle(0, 0, 512, 512);
+	app.ctx.clearRect(0, 0, 512, 512);
 	app.ctx.beginPath();
 	var coord0 = lissajous(0, p);
 	app.ctx.moveTo(coord0.x, coord0.y);
