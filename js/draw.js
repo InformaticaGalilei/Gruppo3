@@ -3,21 +3,16 @@
  *	Nicola Marigo
  */
 
-// X NICO: Qui hai la funzione da cui partire, questa viene eseguita quando apri la pagina
-// Fai in modo che chiami un'altra funzione per disegnare con il ciclo che ti ho spiegato
+var p = 0.0;
 
 function startAnimation()
 {
 	app.ctx.lineWidth = 2;
 	app.ctx.strokeStyle = "blue";
-	var p = 0.0;
-	while (true) {
-		frame (p);
-		p += app.speed;
-	}
+	setInterval(frame, 10);
 }
 
-function frame(p)
+function frame()
 {
 	app.ctx.clearRect(0, 0, 512, 512);
 	app.ctx.beginPath();
@@ -28,4 +23,5 @@ function frame(p)
 		app.ctx.lineTo(coord.x, coord.y);
 	}
 	app.ctx.stroke();
+	p += app.speed;
 }
