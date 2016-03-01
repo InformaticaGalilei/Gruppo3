@@ -18,7 +18,7 @@ function frame()
 	app.ctx.beginPath();
 	var coord0 = lissajous(0, p);
 	app.ctx.moveTo(coord0.x, coord0.y);
-	for (t=0; t<2*Math.pi; t += 0.05) {
+	for (t = 0; t < 2 * Math.PI; t += 0.05) {
 		var coord = lissajous(t, p);
 		app.ctx.lineTo(coord.x, coord.y);
 	}
