@@ -14,12 +14,14 @@ var app =
 		this.vFx = document.getElementById("fxVal");
 		this.vFy = document.getElementById("fyVal");
 		this.elementSpeed = document.getElementById("Speed");
+		this.elementColor = document.getElementById("colorP");
 		
 		this.fx = parseFloat(this.elementFx.value);
 		this.fy = parseFloat(this.elementFy.value);
 		this.vFx.innerHTML = this.fx;
 		this.vFy.innerHTML = this.fy;
 		this.speed = parseFloat(this.elementSpeed.value);
+		this.color = this.elementColor.value;
 		
 		// Controlla se è attivata l'HWA
 		var getVars = parseGetVars();
@@ -35,10 +37,23 @@ var app =
 		}
 	},
 	
+	updateColor: function()
+	{
+		if (this.hwAccel) {
+			var fColor = hexToRgb(color);
+			this.gl.uniform2f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
+		}
+		else {
+			app.ctx.strokeStyle = "#" + this.color;
+		}
+	},
+	
 	initNoHW: function()
 	{
 		// Init senza HWA
 		this.ctx = this.canvas.getContext("2d");
+		app.ctx.strokeStyle = "#" + this.color;
+		app.ctx.lineWidth = 2;
 		startAnimation();
 	},
 	
@@ -90,11 +105,14 @@ var app =
 		this.gl.vertexAttribPointer(coord, 3, this.gl.FLOAT, false, 0, 0);
 		this.gl.enableVertexAttribArray(coord);
 		this.locationOfTime = this.gl.getUniformLocation(this.shaderProgram, "time");
+		this.locationOfColor = this.gl.getUniformLocation(this.shaderProgram, "color");
 		this.locationOfSize = this.gl.getUniformLocation(this.shaderProgram, "size");
 		this.locationOfFreq = this.gl.getUniformLocation(this.shaderProgram, "freq");
 		this.gl.uniform1f(this.locationOfTime, 0);
 		this.gl.uniform2f(this.locationOfSize, this.canvas.width, this.canvas.height);
 		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
+		var fColor = hexToRgb(color);
+		this.gl.uniform2f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
 		
 		this.gl.clearColor(0.188, 0.22, 0.25, 0.0);
 		//this.gl.enable(this.gl.DEPTH_TEST);
@@ -126,4 +144,14 @@ function parseGetVars()
 	}
 	
 	return args;
+}
+
+function hexToRgb(hex)
+{
+    var bigint = parseInt(hex, 16);
+    var r = ((bigint >> 16) & 255) / 255.0;
+    var g = ((bigint >> 8) & 255) / 255.0;
+    var b = (bigint & 255) / 255.0;
+
+    return [r, g, b];
 }
