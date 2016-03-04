@@ -42,7 +42,7 @@ var app =
 		this.color = val;
 		if (this.hwAccel) {
 			var fColor = hexToRgb(this.color);
-			this.gl.uniform2f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
+			this.gl.uniform3f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
 		}
 		else {
 			app.ctx.strokeStyle = "#" + this.color;
@@ -113,7 +113,7 @@ var app =
 		this.gl.uniform2f(this.locationOfSize, this.canvas.width, this.canvas.height);
 		this.gl.uniform2f(this.locationOfFreq, this.fx, this.fy);
 		var fColor = hexToRgb(this.color);
-		this.gl.uniform2f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
+		this.gl.uniform3f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
 		
 		this.gl.clearColor(0.188, 0.22, 0.25, 0.0);
 		//this.gl.enable(this.gl.DEPTH_TEST);
