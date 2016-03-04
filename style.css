@@ -84,11 +84,13 @@ a {
 
 .sectionDivider {
 	font-style: italic;
-	width: 80%;
-	height: 20px;
+	width: 75%;
+	height: 11px;
 	border-bottom: 1px solid #F3F3F3;
+	margin: auto;
 }
 
 .sectionDividerText {
 	background-color: #3A4750;
+	padding: 0px 10px;
 }
