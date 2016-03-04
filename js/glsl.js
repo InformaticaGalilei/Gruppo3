@@ -4,7 +4,7 @@
  */
 
 var srcFrag = 
-	"uniform vec3 color; void main() { gl_FragColor = vec4(color, 1.0); }";
+	"uniform vec3 color;\nvoid main() { gl_FragColor = vec4(color, 1.0); }";
 	
 var srcVert =
 	"#ifdef GL_ES\n" +
