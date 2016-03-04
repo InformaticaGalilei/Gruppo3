@@ -81,3 +81,14 @@ a {
 	width: 100%;
 	display: inline-block;
 }
+
+.sectionDivider {
+	font-style: italic;
+	width: 80%;
+	height: 20px;
+	border-bottom: 1px solid #F3F3F3;
+}
+
+.sectionDividerText {
+	background-color: #3A4750;
+}
