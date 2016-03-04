@@ -65,6 +65,12 @@ a {
 	padding: 10px;
 }
 
+#infoArea {
+	margin: auto;
+	width: 70%;
+	margin-top: 40px;
+}
+
 .slider {
 	padding: 5px;
 	vertical-align: middle;
