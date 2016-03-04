@@ -3,7 +3,10 @@
  *	Giulio Zausa
  */
 
-var srcFrag = 
+var srcFrag =
+	"#ifdef GL_ES\n" +
+		"precision mediump float;\n" +
+	"#endif\n" +
 	"uniform vec3 color;\nvoid main() { gl_FragColor = vec4(color, 1.0); }";
 	
 var srcVert =
