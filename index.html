@@ -5,6 +5,7 @@
 <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="style.css">
 
+<script src="js/jscolor.min.js"></script>
 <script src="js/glsl.js"></script>
 <script src="js/app.js"></script>
 <script src="js/lissajous.js"></script>
@@ -21,6 +22,7 @@
 		<p><span class="attrib">Frequenza X: <span id="fxVal"></span></span><input class="slider" type="range" id="Fx" onchange="app.fx = parseFloat(this.value); app.vFx.innerHTML = this.value;" value="3" min="1" max="20"></p>
 		<p><span class="attrib">Frequenza Y: <span id="fyVal"></span></span><input class="slider" type="range" id="Fy" onchange="app.fy = parseFloat(this.value); app.vFy.innerHTML = this.value;" value="2" min="1" max="20"></p>
 		<p><span class="attrib">Velocità: </span><input class="slider" type="range" id="Speed" onchange="app.speed = parseFloat(this.value)" value="5" min="1" max="10"></p>
+		<div class="sectionDivider"><span class="sectionDividerText"></span></div>
 	</div>
 	
 	<footer>Giulia Scocco, Giulio Zausa, Nicola Marigo<br /><a href="?hw=true" id="hwLabel">Abilita accelerazione hardware</a></footer>
