@@ -37,8 +37,9 @@ var app =
 		}
 	},
 	
-	updateColor: function()
+	updateColor: function(val)
 	{
+		this.color = val;
 		if (this.hwAccel) {
 			var fColor = hexToRgb(color);
 			this.gl.uniform2f(this.locationOfColor, fColor[0], fColor[1], fColor[2]);
