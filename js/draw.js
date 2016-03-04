@@ -7,8 +7,6 @@ var p = 0.0;
 
 function startAnimation()
 {
-	app.ctx.lineWidth = 2;
-	app.ctx.strokeStyle = "#30F241";
 	setInterval(frame, 10);
 }
 
