@@ -23,7 +23,7 @@
 		<p><span class="attrib">Frequenza Y: <span id="fyVal"></span></span><input class="slider" type="range" id="Fy" onchange="app.fy = parseFloat(this.value); app.vFy.innerHTML = this.value;" value="2" min="1" max="20"></p>
 		<p><span class="attrib">Velocità:</span><input class="slider" type="range" id="Speed" onchange="app.speed = parseFloat(this.value)" value="5" min="1" max="10"></p>
 		<div class="sectionDivider"><span class="sectionDividerText">Altre impostazioni</span></div>
-		<p><span class="attrib">Colore:</span><input class="slider jscolor" onchange="app.updateColor(this.value)"></p>
+		<p><span class="attrib">Colore:</span><input id="colorP" class="slider jscolor" onchange="app.updateColor(this.value)"></p>
 	</div>
 	
 	<footer>Giulia Scocco, Giulio Zausa, Nicola Marigo<br /><a href="?hw=true" id="hwLabel">Abilita accelerazione hardware</a></footer>
