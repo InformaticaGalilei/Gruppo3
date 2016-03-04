@@ -65,14 +65,15 @@ a {
 	padding: 10px;
 }
 
-.dataEntry {
-	padding: 5px;
-	margin-left: 5px;
-}
-
 .slider {
 	padding: 5px;
-	margin-left: 5px;
+	vertical-align: middle;
+	width: 80%;
+}
+
+.colorP {
+	text-align: center;
+	margin-top: 5px;
 	vertical-align: middle;
 	width: 80%;
 }
